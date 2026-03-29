@@ -135,3 +135,14 @@ docker-compose.override.yml
 
 node_modules/
 dist/
+
+# =========================
+
+#Terraform files
+
+/.terraform/
+
+*.tfstate
+*.tfstate.*
+
+# =========================
