@@ -1,0 +1,137 @@
+# =========================
+
+# Build results
+
+# =========================
+
+bin/
+obj/
+out/
+
+# =========================
+
+# User-specific files
+
+# =========================
+
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# =========================
+
+# Visual Studio
+
+# =========================
+
+.vs/
+*.vsp
+*.vspx
+*.sap
+
+# =========================
+
+# Rider / VS Code
+
+# =========================
+
+.idea/
+.vscode/
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# OS generated files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# NuGet
+
+# =========================
+
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# except this one if you use it
+
+!/.nuget/packages.config
+
+# =========================
+
+# Publish output
+
+# =========================
+
+publish/
+wwwroot/dist/
+
+# =========================
+
+# Entity Framework
+
+# =========================
+
+*.dbmdl
+*.jfm
+
+# =========================
+
+# Secrets (IMPORTANT)
+
+# =========================
+
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+
+# =========================
+
+# User secrets
+
+# =========================
+
+secrets.json
+
+# =========================
+
+# Docker
+
+# =========================
+
+docker-compose.override.yml
+
+# =========================
+
+# Misc
+
+# =========================
+
+*.cache
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# =========================
+
+# Node (if you ever add frontend)
+
+# =========================
+
+node_modules/
+dist/
