@@ -24,12 +24,12 @@ resource "random_integer" "ri" {
 }
 
 resource "azurerm_resource_group" "arg" {
-  name     = "taskboardrg-${random_integer.ri.result}"
-  location = "Poland Central"
+  name     = "${var.resource_group_name}-${random_integer.ri.result}"
+  location = var.location
 }
 
 resource "azurerm_service_plan" "app-service-plan" {
-  name                = "taskboard-service-plan-${random_integer.ri.result}"
+  name                = "${var.app_service_plan_name}-${random_integer.ri.result}"
   resource_group_name = azurerm_resource_group.arg.name
   location            = azurerm_resource_group.arg.location
   sku_name            = "F1"
@@ -37,7 +37,7 @@ resource "azurerm_service_plan" "app-service-plan" {
 }
 
 resource "azurerm_linux_web_app" "web-app" {
-  name                = "taskboard-web-app-${random_integer.ri.result}"
+  name                = "${var.app_service_name}-${random_integer.ri.result}"
   location            = azurerm_resource_group.arg.location
   resource_group_name = azurerm_resource_group.arg.name
   service_plan_id     = azurerm_service_plan.app-service-plan.id
@@ -60,17 +60,17 @@ resource "azurerm_linux_web_app" "web-app" {
 
 // PART 1 : 
 resource "azurerm_mssql_server" "mssqlserver" {
-  name                         = "mssql-server-${random_integer.ri.result}"
+  name                         = "${var.sql_server_name}-${random_integer.ri.result}"
   resource_group_name          = azurerm_resource_group.arg.name
   location                     = azurerm_resource_group.arg.location
   version                      = "12.0"
-  administrator_login          = "missadministrator"
-  administrator_login_password = "thisIsKat11"
+  administrator_login          = var.sql_admin_name
+  administrator_login_password = var.sql_admin_pass
 }
 
 
 resource "azurerm_mssql_database" "mssqldb" {
-  name                 = "mssql-db-${random_integer.ri.result}"
+  name                 = "${var.sql_db_name}-${random_integer.ri.result}"
   server_id            = azurerm_mssql_server.mssqlserver.id
   collation            = "SQL_Latin1_General_CP1_CI_AS"
   license_type         = "LicenseIncluded"
@@ -86,7 +86,7 @@ resource "azurerm_mssql_database" "mssqldb" {
 
 
 resource "azurerm_mssql_firewall_rule" "firewall" {
-  name             = "mssql-firewall-rule-${random_integer.ri.result}"
+  name             = "${var.firewall-rule-name}-${random_integer.ri.result}"
   server_id        = azurerm_mssql_server.mssqlserver.id
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"
@@ -94,8 +94,8 @@ resource "azurerm_mssql_firewall_rule" "firewall" {
 
 resource "azurerm_app_service_source_control" "source-control" {
   app_id                 = azurerm_linux_web_app.web-app.id
-  repo_url               = "https://github.com/JekoGyulev/AzureTaskBoard-Terraform"
-  branch                 = "master"
+  repo_url               = var.github-repo-url
+  branch                 = var.github-repo-branch
   use_manual_integration = true
 }
 
