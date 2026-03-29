@@ -140,9 +140,9 @@ dist/
 
 #Terraform files
 
-/.terraform/
+/terraform/.terraform/
 
-*.tfstate
-*.tfstate.*
+/terraform/*.tfstate
+/terraform/*.tfstate.*
 
 # =========================
