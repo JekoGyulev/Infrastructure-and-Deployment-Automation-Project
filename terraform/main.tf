@@ -98,3 +98,22 @@ resource "azurerm_app_service_source_control" "source-control" {
   use_manual_integration = true
 }
 
+resource "azurerm_resource_group" "storagerg" {
+  name = "storageRG"
+  location = var.location
+}
+
+resource "azurerm_storage_account" "storage_account" {
+  name = "taskboardstoragej"
+  resource_group_name = azurerm_resource_group.storagerg.name
+  location = azurerm_resource_group.storagerg.location
+  account_kind = "StorageV2"
+  account_tier = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_storage_container" "storage_container" {
+  name = "taskboardstoragecontainer"
+  storage_account_id = azurerm_storage_account.storage_account.id
+  container_access_type = "private"
+}
