@@ -10,7 +10,16 @@ terraform {
       version = "=3.8.1"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name = "storageRG"
+    storage_account_name = "taskboardstoragej"
+    container_name = "taskboardstoragecontainer"
+    key = "terraform.tfstate"
+    
+  }
 }
+
 
 
 provider "azurerm" {
@@ -98,5 +107,4 @@ resource "azurerm_app_service_source_control" "source-control" {
   branch                 = var.github-repo-branch
   use_manual_integration = true
 }
-
 

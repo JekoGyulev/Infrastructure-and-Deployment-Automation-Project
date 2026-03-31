@@ -50,9 +50,6 @@ jobs:
           path: ./terraform/tfplan
     
 
-
-
-
     terraform-apply:
       runs-on: ubuntu-latest
 
