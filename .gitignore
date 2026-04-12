@@ -144,5 +144,6 @@ dist/
 
 /terraform/*.tfstate
 /terraform/*.tfstate.*
+/terraform/terraform.tfvars
 
 # =========================
