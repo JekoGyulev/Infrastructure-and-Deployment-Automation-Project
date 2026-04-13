@@ -38,17 +38,20 @@ variable "sql_admin_pass" {
   type        = string
 }
 
-variable "firewall-rule-name" {
+variable "firewall_rule_name" {
   description = "The name of the firewall rule."
   type        = string
+  default     = "mssql-firewall-rule-jeko"
 }
 
-variable "github-repo-url" {
+variable "github_repo_url" {
   description = "The URL of your github repository."
   type        = string
+  default     = "https://github.com/JekoGyulev/Infrastructure-and-Deployment-Automation-Project"
 }
 
-variable "github-repo-branch" {
+variable "github_repo_branch" {
   description = "The default branch to use for your github repository."
   type        = string
+  default     = "master"
 }

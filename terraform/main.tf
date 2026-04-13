@@ -79,7 +79,7 @@ resource "azurerm_mssql_database" "mssqldb" {
 
 
 resource "azurerm_mssql_firewall_rule" "firewall" {
-  name             = "${var.firewall-rule-name}-jeko"
+  name             = var.firewall_rule_name
   server_id        = azurerm_mssql_server.mssqlserver.id
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"
@@ -87,8 +87,8 @@ resource "azurerm_mssql_firewall_rule" "firewall" {
 
 resource "azurerm_app_service_source_control" "source-control" {
   app_id                 = azurerm_linux_web_app.web-app.id
-  repo_url               = var.github-repo-url
-  branch                 = var.github-repo-branch
+  repo_url               = var.github_repo_url
+  branch                 = var.github_repo_branch
   use_manual_integration = true
 }
 

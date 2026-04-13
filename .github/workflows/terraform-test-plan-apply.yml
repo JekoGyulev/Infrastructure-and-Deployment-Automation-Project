@@ -10,6 +10,15 @@ env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID}}
   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID}}
 
+  TF_VAR_resource_group_name: ${{ secrets.TF_VAR_RESOURCE_GROUP_NAME }}
+  TF_VAR_location: ${{ secrets.TF_VAR_LOCATION }}
+  TF_VAR_app_service_plan_name: ${{ secrets.TF_VAR_APP_SERVICE_PLAN_NAME }}
+  TF_VAR_web_app_name: ${{ secrets.TF_VAR_WEB_APP_NAME }}
+  TF_VAR_sql_server_name: ${{ secrets.TF_VAR_SQL_SERVER_NAME }}
+  TF_VAR_sql_db_name: ${{ secrets.TF_VAR_SQL_DB_NAME }}
+  TF_VAR_sql_admin_name: ${{ secrets.TF_VAR_SQL_ADMIN_NAME }}
+  TF_VAR_sql_admin_pass: ${{ secrets.TF_VAR_SQL_ADMIN_PASS }}
+
 jobs: 
 
     terraform-test:
@@ -118,5 +127,5 @@ jobs:
           path: ./terraform
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply input=false -auto-approve tfplan
         working-directory: ./terraform    
