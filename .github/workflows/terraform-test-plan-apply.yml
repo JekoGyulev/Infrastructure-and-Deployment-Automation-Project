@@ -18,7 +18,6 @@ env:
   TF_VAR_sql_db_name: ${{ secrets.TF_VAR_SQL_DB_NAME }}
   TF_VAR_sql_admin_name: ${{ secrets.TF_VAR_SQL_ADMIN_NAME }}
   TF_VAR_sql_admin_pass: ${{ secrets.TF_VAR_SQL_ADMIN_PASS }}
-  TF_VAR_subscription_id: ${ { secrets.TF_VAR_SUBSCRIPTION_ID} }
 
 jobs: 
 
