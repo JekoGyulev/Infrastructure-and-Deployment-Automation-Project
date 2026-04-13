@@ -1,7 +1,7 @@
 
 variable "subscription_id" {
   description = "The ID of your subscription in Azure"
-  type = string
+  type        = string
 }
 
 
