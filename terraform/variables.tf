@@ -13,8 +13,8 @@ variable "app_service_plan_name" {
   type        = string
 }
 
-variable "app_service_name" {
-  description = "The name of the app service."
+variable "wep_app_name" {
+  description = "The name of the web application."
   type        = string
 }
 

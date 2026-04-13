@@ -6,13 +6,7 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    resource_group_name  = "storageRG"
-    storage_account_name = "taskboardstoragej"
-    container_name       = "taskboardstoragecontainer"
-    key                  = "terraform.tfstate"
 
-  }
 }
 
 
@@ -36,7 +30,7 @@ resource "azurerm_service_plan" "app-service-plan" {
 }
 
 resource "azurerm_linux_web_app" "web-app" {
-  name                = "${var.app_service_name}-jeko"
+  name                = var.wep_app_name
   location            = azurerm_resource_group.arg.location
   resource_group_name = azurerm_resource_group.arg.name
   service_plan_id     = azurerm_service_plan.app-service-plan.id
