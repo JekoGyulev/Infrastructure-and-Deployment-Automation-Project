@@ -30,7 +30,7 @@ resource "azurerm_service_plan" "app-service-plan" {
 }
 
 resource "azurerm_linux_web_app" "web-app" {
-  name                = var.wep_app_name
+  name                = var.web_app_name
   location            = azurerm_resource_group.arg.location
   resource_group_name = azurerm_resource_group.arg.name
   service_plan_id     = azurerm_service_plan.app-service-plan.id
