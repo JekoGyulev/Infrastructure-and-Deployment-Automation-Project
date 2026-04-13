@@ -188,7 +188,30 @@ az login
 az account set --subscription "<your-subscription-id>"
 ```
 
-### 3. Provision infrastructure with Terraform
+### 3. Create Resource Group, Storage Account, Storage Container (needed in order for terraform to run properly and provision infrastructure)
+
+```bash
+az group create --name "<your-resource-group-name>" --location "<your-location>"
+```
+
+
+```bash
+az storage account create
+--name "<your-account-name>"
+--resource-group "<name-of-the-resource-group-from-above>"
+--location "<your-location>"
+--sku "<the-tier-to-use-for-this-storage-account>"
+--kind "<the-kind-of-account"
+```
+
+```bash
+az storage container create
+-n "<name-of-the-storage-container>"
+--account-name "<name-of-the-storage-account-created-from-earlier>"
+```
+
+
+### 4. Provision infrastructure with Terraform
 
 ```bash
 cd terraform
@@ -201,7 +224,7 @@ terraform apply
 
 Terraform will output the App Service URL and other resource details upon completion.
 
-### 4. Run the application locally (optional)
+### 5. Run the application locally (optional)
 
 ```bash
 cd TaskBoard.WebApp
